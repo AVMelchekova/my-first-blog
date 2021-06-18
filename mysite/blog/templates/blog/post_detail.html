@@ -3,10 +3,14 @@
 {% block content %}
     <div class="post">
         {% if post.published_date %}
+			
             <div class="date row justify-content-end">
                 {{ post.published_date }}
             </div>
         {% endif %}
+		{% if user.is_authenticated %}
+			<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="material-icons">edit</span></a>
+		{% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
